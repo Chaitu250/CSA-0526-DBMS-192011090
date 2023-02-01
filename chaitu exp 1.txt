@@ -1,0 +1,103 @@
+Enter password: *****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 12
+Server version: 5.5.62 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use sse;
+Database changed
+mysql> show tables;
++--------------------+
+| Tables_in_amarnadh |
++--------------------+
+| employee           |
+| faculty            |
+| friends            |
+| student            |
++--------------------+
+4 rows in set (0.03 sec)
+
+mysql> create table professor(proname varchar(10),proid int(20),prono int(15));
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> show tables;
++--------------------+
+| Tables_in_amarnadh |
++--------------------+
+| employee           |
+| faculty            |
+| friends            |
+| professor          |
+| student            |
++--------------------+
+5 rows in set (0.01 sec)
+
+mysql> desc professor;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| proname | varchar(10) | YES  |     | NULL    |       |
+| proid   | int(20)     | YES  |     | NULL    |       |
+| prono   | int(15)     | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+3 rows in set (0.08 sec)
+
+mysql> insert into professor values("amar",1,98766);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into professor values("balaji",2,98765);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into professor values("raghu",3
+    ->
+    -> insert into professor values("raghu",3,63165);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'insert into professor values("raghu",3,63165)' at line 3
+mysql> insert into professor values("raghu",3,63185);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> desc professor;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| proname | varchar(10) | YES  |     | NULL    |       |
+| proid   | int(20)     | YES  |     | NULL    |       |
+| prono   | int(15)     | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+3 rows in set (0.02 sec)
+
+mysql> select*from professor;
++---------+-------+-------+
+| proname | proid | prono |
++---------+-------+-------+
+| amar    |     1 | 98766 |
+| chaitu  |     2 | 98765 |
+| raghu   |     3 | 63185 |
++---------+-------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table professor add adress varchar(20);
+Query OK, 3 rows affected (0.08 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> desc professor;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| proname | varchar(10) | YES  |     | NULL    |       |
+| proid   | int(20)     | YES  |     | NULL    |       |
+| prono   | int(15)     | YES  |     | NULL    |       |
+| adress  | varchar(20) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+4 rows in set (0.06 sec)
+
+mysql> drop table professor;
+Query OK, 0 rows affected (0.05 sec)
+
+mysql>
